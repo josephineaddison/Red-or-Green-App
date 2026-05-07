@@ -63,9 +63,9 @@ This app takes a picture with your device's camera and then displays color infor
 	</canvas><br> <!-- creates canvas for user to input image --> 
 
 	    
-      <p>Touch the picture to see an output of your RGB, HSV, and red-green values.</p> <!-- message above canvas -->
-      <p id="messageDisplayArea">This area will be replaced by the RGB values once the image is tapped.</p> <!-- message below canvas -->
-	<p id="messageDisplayArea2">This area will be replaced by the HSV values once the image is tapped.</p> <!-- message below canvas -->
+      <p>Touch the picture to see whether your color is more red or green.</p> <!-- message above canvas -->
+      <p id="messageDisplayArea">   </p> <!-- message below canvas -->
+	<p id="messageDisplayArea2">   </p> <!-- message below canvas -->
 	<p id="messageDisplayArea3">This area will be replaced by red or green once the image is tapped.</p> <!-- message below canvas -->
 
 		  </div>
@@ -133,8 +133,8 @@ function rgbToHsv(r, g, b) {
       const [h, s, v] = rgbToHsv(pixel[0], pixel[1], pixel[2]);
      const colorName = getColorName(h, s, v);
    
-      message.innerText = "HSV values= " + Math.round(h) + ", " + Math.round(s) + ", " + Math.round(v);
-	message2.innerText = "RGB values= " + Math.round(pixel[0]) + ", " + Math.round(pixel[1]) + ", " + Math.round(pixel[2]);
+      message.innerText = "    ";
+	    message2.innerText = "    ";
 	    message3.innerText = "Color Name= " + colorName;
     }; 
 // color that is tapped and detected is shown below the selected photo
