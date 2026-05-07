@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative, DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
  
@@ -47,7 +48,7 @@ This app takes a picture with your device's camera and then displays color infor
 </head> 
 	
 <body>
-  
+  <body class="w3-flat-emerald">
     <header class="w3-container w3-flat-pomegranate">
          <h1>Red-Green Color Analysis</h1></div>
     </header>
@@ -58,7 +59,7 @@ This app takes a picture with your device's camera and then displays color infor
         Press the "choose file" button to create or choose image file:<br>
         <input type="file" id="fileInput" STYLE="background-color: #237731;">
 	<br><br>
-    
+
 	<canvas id="myCanvas" width="400" height="400">
 	</canvas><br> <!-- creates canvas for user to input image --> 
 
@@ -112,7 +113,7 @@ function rgbToHsv(r, g, b) {
       return [h * 360, s * 100, v * 100];
     }
 
-// this function takes the HSV values of the pixel and uses if statements to categorize a color   
+// this function takes the HSV values of the pixel and uses if statements to decide whether a color is red or green   
  function getColorName(h, s, v) {
       if (s < 10 || v < 20) return "Neutral"; //colors with low enough s and v values come back as neutral
       if (h >= 25 && h <= 50) return "Closer to Red";  //this comes back as closer to green if the user clicks on yellow or orange
@@ -133,8 +134,8 @@ function rgbToHsv(r, g, b) {
       const [h, s, v] = rgbToHsv(pixel[0], pixel[1], pixel[2]);
      const colorName = getColorName(h, s, v);
    
-      message.innerText = "    ";
-	    message2.innerText = "    ";
+      message.innerText = "    "; //keeps hsl value slot because I'm scared to delete it but doesn't display anything
+	    message2.innerText = "    "; //keeps rgb value slot because I'm scared to delete it but doesn't display anything
 	    message3.innerText = "Color Name= " + colorName;
     }; 
 // color that is tapped and detected is shown below the selected photo
