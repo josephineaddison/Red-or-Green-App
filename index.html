@@ -114,11 +114,11 @@ function rgbToHsv(r, g, b) {
 
 // this function takes the HSV values of the pixel and uses if statements to categorize a color   
  function getColorName(h, s, v) {
-      if (s < 20 || v < 50) return "Unclear/Neutral"; 
-      if (h >= 15 && h < 75) return "Neither Red nor Green"; 
-      if (h >= 75 && h <= 165) return "Green"; 
-      if (h >= 165 && h <= 255) return "Blue";
-      if (h >= 255 && h <= 345) return "Purple/Pink"; 
+      if (s < 10 || v < 20) return "Neutral"; //colors with low enough s and v values come back as neutral
+      if (h >= 15 && h < 50) return "Closer to Red";  //this comes back as closer to green if the user clicks on yellow or orange
+      if (h >= 50 && h <= 165) return "Green"; 
+      if (h >= 165 && h <= 255) return "Closer to Green"; //this comes back as closer to green if the user clicks on blue
+      if (h >= 255 && h <= 345) return "Closer to Red";  //purple and pink come back as closer to red
       if (h >= 345 && h <= 360 || h >= 0 && h <= 15) return "Red"; 
       return "Other Color";
     }
