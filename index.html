@@ -48,28 +48,28 @@ This app takes a picture with your device's camera and then displays color infor
 	
 <body>
   
-    <header class="w3-container w3-flat-carrot">
-         <h1>Color Example App</h1></div>
+    <header class="w3-container w3-flat-pomegranate">
+         <h1>Red-Green Color Analysis</h1></div>
     </header>
 	
     <div class="w3-container">	
-      <p>This app takes a picture with your device's camera and then displays color information when a user touches (or clicks) on the image.</p>
+      <p>This app takes a picture with your device's camera and then displays whether a color is more similar to red or green when the user clicks the image.</p>
       
         Press the "choose file" button to create or choose image file:<br>
-        <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
+        <input type="file" id="fileInput" STYLE="background-color: #237731;">
 	<br><br>
     
-	<canvas id="myCanvas" width="500" height="667">
+	<canvas id="myCanvas" width="400" height="400">
 	</canvas><br> <!-- creates canvas for user to input image --> 
 
 	    
-      <p>Touch the picture to see an output of your RGB and HSV values.</p> <!-- message above canvas -->
-      <p id="messageDisplayArea">This area will be replaced by the RGB values once the image is tapped.</p> <!-- message above canvas -->
-	<p id="messageDisplayArea2">This area will be replaced by the HSV values once the image is tapped.</p> <!-- message above canvas -->
-	<p id="messageDisplayArea3">This area will be replaced by the color name once the image is tapped.</p> <!-- message above canvas -->
+      <p>Touch the picture to see an output of your RGB, HSV, and red-green values.</p> <!-- message above canvas -->
+      <p id="messageDisplayArea">This area will be replaced by the RGB values once the image is tapped.</p> <!-- message below canvas -->
+	<p id="messageDisplayArea2">This area will be replaced by the HSV values once the image is tapped.</p> <!-- message below canvas -->
+	<p id="messageDisplayArea3">This area will be replaced by red or green once the image is tapped.</p> <!-- message below canvas -->
 
 		  </div>
-<!--    <footer class="w3-bottom w3-container w3-flat-carrot">
+<!--    <footer class="w3-bottom w3-container w3-flat-pomegranate">
       <p>DIY Diagnostics</p>
     </footer> -->
 
@@ -80,8 +80,8 @@ This app takes a picture with your device's camera and then displays color infor
     		const canvas = document.getElementById('myCanvas');
     		const ctx = canvas.getContext('2d');
     		ctx.font = '20pt Calibri';
-    		ctx.fillStyle = "black";
-    		ctx.fillText("Push Choose File above. Image will load here.", 10, 20);
+    		ctx.fillStyle = "green";
+    		ctx.fillText("Image will load here.", 10, 20);
 		ctx.strokeRect(0, 0, canvas.width, canvas.height);
 	  
    	 const message = document.getElementById('messageDisplayArea');
@@ -115,8 +115,7 @@ function rgbToHsv(r, g, b) {
 // this function takes the HSV values of the pixel and uses if statements to categorize a color   
  function getColorName(h, s, v) {
       if (s < 20 || v < 50) return "Unclear/Neutral"; 
-      if (h >= 15 && h < 45) return "Orange";
-      if (h >= 45 && h <= 75) return "Yellow"; 
+      if (h >= 15 && h < 75) return "Neither Red nor Green"; 
       if (h >= 75 && h <= 165) return "Green"; 
       if (h >= 165 && h <= 255) return "Blue";
       if (h >= 255 && h <= 345) return "Purple/Pink"; 
