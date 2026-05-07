@@ -57,7 +57,7 @@ This app takes a picture with your device's camera and then displays color infor
       <p>This app takes a picture with your device's camera and then displays whether a color is more similar to red or green when the user clicks the image.</p>
       
         Press the "choose file" button to create or choose image file:<br>
-        <input type="file" id="fileInput" STYLE="background-color: #237731;">
+        <input type="file" id="fileInput" STYLE="background-color: #d44c4c;">
 	<br><br>
 
 	<canvas id="myCanvas" width="400" height="400">
@@ -113,7 +113,7 @@ function rgbToHsv(r, g, b) {
       return [h * 360, s * 100, v * 100];
     }
 
-// this function takes the HSV values of the pixel and uses if statements to decide whether a color is red or green   
+// this function takes the HSV values of the pixel and uses if statements to decide whether a color is red or green or in the middle   
  function getColorName(h, s, v) {
       if (s < 10 || v < 20) return "Neutral"; //colors with low enough s and v values come back as neutral
       if (h >= 25 && h <= 50) return "Closer to Red";  //this comes back as closer to green if the user clicks on yellow or orange
@@ -122,7 +122,7 @@ function rgbToHsv(r, g, b) {
       if (h >= 165 && h <= 255) return "Closer to Green"; //this comes back as closer to green if the user clicks on blue
       if (h >= 255 && h <= 345) return "Closer to Red";  //purple and pink come back as closer to red
       if (h >= 345 && h <= 360 || h >= 0 && h <= 25) return "Red"; 
-      return "Other Color";
+      return "Unable to Detect"; //if none of the other statements apply
     }
     
     canvas.onclick = function(event) { // this creates an event that happens when a pixel on the canvas is clicked.
